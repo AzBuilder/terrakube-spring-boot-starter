@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.3</version>
+  </parent>
+
+  <groupId>org.azbuilder.api.spring.starter</groupId>
+  <artifactId>api-client-spring-boot-starter</artifactId>
+  <version>${revision}</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <revision>0.0.1</revision>
+    <maven.deploy.skip>false</maven.deploy.skip>
+  </properties>
+
+  <name>api-client-spring-boot-starter</name>
+  <description>api-client-spring-boot-starter</description>
+  <url>https://github.com/AzBuilder/terraform-spring-boot</url>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/AzBuilder/azb-api-client-spring-boot-starter</url>
+    </repository>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.azbuilder.api.spring.autoconfigure</groupId>
+      <artifactId>api-client-spring-boot-autoconfigure</artifactId>
+      <version>${revision}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.azbuilder.api.client</groupId>
+      <artifactId>api-client</artifactId>
+      <version>${revision}</version>
+    </dependency>
+  </dependencies>
+
+</project>
