@@ -1,13 +1,16 @@
 package org.azbuilder.api.client;
 
-import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 import org.azbuilder.api.client.model.organization.OrganizationResponse;
 import org.azbuilder.api.client.model.organization.job.Job;
+import org.azbuilder.api.client.model.organization.module.definition.Definition;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.ParameterResponse;
 import org.azbuilder.api.client.model.organization.workspace.WorkspaceResponse;
+import org.azbuilder.api.client.model.organization.workspace.environment.Environment;
+import org.azbuilder.api.client.model.organization.workspace.secret.Secret;
 import org.azbuilder.api.client.model.organization.workspace.secret.SecretResponse;
+import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.organization.workspace.variable.VariableResponse;
 
 public interface RestClient{
@@ -28,6 +31,20 @@ public interface RestClient{
     VariableResponse getAllVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace")
-    WorkspaceResponse getAllWorkspaces(@Param("organizationId") String organizationId);
+    WorkspaceResponse<Void> getAllWorkspaces(@Param("organizationId") String organizationId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=definition")
+    WorkspaceResponse<Definition> getWorkspaceByIdWithModuleDefinition(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=variable")
+    WorkspaceResponse<Variable> getWorkspaceByIdWithVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=secret")
+    WorkspaceResponse<Secret> getWorkspaceByIdWithSecrets(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=environment")
+    WorkspaceResponse<Environment> getWorkspaceByWithEnvironmentVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
+
+
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class WorkspaceResponse {
+public class WorkspaceResponse<T> {
     List<Workspace> data;
+    List<T> included;
 }
