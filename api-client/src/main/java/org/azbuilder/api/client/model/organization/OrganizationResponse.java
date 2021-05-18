@@ -7,8 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OrganizationResponse<T> {
-
-    List<Organization> data;
-    List<T> included;
+public class OrganizationResponse<T1,T2> {
+    T1 data;
+    List<T2> included;
 }

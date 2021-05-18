@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ParameterResponse {
-    List<Parameter> data;
+public class ParameterResponse<T1> {
+    T1 data;
 }

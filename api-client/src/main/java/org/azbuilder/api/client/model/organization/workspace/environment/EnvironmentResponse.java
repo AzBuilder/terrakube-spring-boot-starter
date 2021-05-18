@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class EnvironmentResponse {
-    List<Environment> data;
+public class EnvironmentResponse<T1> {
+    T1 data;
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class VariableResponse {
-    List<Variable> data;
+public class VariableResponse<T1> {
+    T1 data;
 }

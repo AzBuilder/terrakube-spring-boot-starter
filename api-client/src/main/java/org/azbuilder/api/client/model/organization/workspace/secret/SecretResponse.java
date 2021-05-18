@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SecretResponse {
-    List<Secret> data;
+public class SecretResponse<T1> {
+    T1 data;
 }
