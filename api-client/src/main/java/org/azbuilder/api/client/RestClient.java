@@ -1,10 +1,12 @@
 package org.azbuilder.api.client;
 
+import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.OrganizationResponse;
 import org.azbuilder.api.client.model.organization.job.Job;
+import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.module.definition.Definition;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.Parameter;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.ParameterResponse;
@@ -43,7 +45,7 @@ public interface RestClient {
     WorkspaceResponse<List<Workspace>, Void> getAllWorkspaces(@Param("organizationId") String organizationId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=definition")
-    WorkspaceResponse<Workspace,Definition> getWorkspaceByIdWithModuleDefinition(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
+    WorkspaceResponse<Workspace, Definition> getWorkspaceByIdWithModuleDefinition(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=variable")
     WorkspaceResponse<Workspace, Variable> getWorkspaceByIdWithVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
@@ -54,5 +56,7 @@ public interface RestClient {
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=environment")
     WorkspaceResponse<Workspace, Environment> getWorkspaceByIdWithEnvironmentVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
-
+    @RequestLine("PATCH /api/v1/organization/{organizationId}/job/{jobId}")
+    @Headers("Content-Type: application/vnd.api+json")
+    void updateJob(JobRequest jobRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId);
 }
