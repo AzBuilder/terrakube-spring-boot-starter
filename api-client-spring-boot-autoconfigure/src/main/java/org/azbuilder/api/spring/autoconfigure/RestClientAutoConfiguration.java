@@ -22,7 +22,7 @@ public class RestClientAutoConfiguration {
     private RestClientProperties restClientProperties;
 
     @Bean
-    public RestClient terraformClient(RestClientProperties restClientProperties) {
+    public RestClient restClient(RestClientProperties restClientProperties) {
         RestClient restClient = Feign.builder()
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
