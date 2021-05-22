@@ -7,6 +7,7 @@ import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.OrganizationResponse;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
+import org.azbuilder.api.client.model.organization.job.JobResponse;
 import org.azbuilder.api.client.model.organization.module.definition.Definition;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.Parameter;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.ParameterResponse;
@@ -59,4 +60,8 @@ public interface RestClient {
     @RequestLine("PATCH /api/v1/organization/{organizationId}/job/{jobId}")
     @Headers("Content-Type: application/vnd.api+json")
     void updateJob(JobRequest jobRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/job/{jobId}")
+    JobResponse getJobById(@Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
 }

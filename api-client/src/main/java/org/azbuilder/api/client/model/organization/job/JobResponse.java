@@ -8,6 +8,5 @@ import java.util.List;
 @Getter
 @Setter
 public class JobResponse {
-
-    List<Job> data;
+    Job data;
 }
