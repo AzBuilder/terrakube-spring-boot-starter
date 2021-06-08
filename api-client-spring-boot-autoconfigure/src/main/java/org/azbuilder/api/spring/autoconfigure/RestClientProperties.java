@@ -17,4 +17,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "org.azbuilder.api")
 public class RestClientProperties {
     private String url;
+    private String clientId;
+    private String clientSecret;
+    private String tenantId;
+    private String scope;
 }
