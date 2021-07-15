@@ -3,11 +3,13 @@ package org.azbuilder.api.client;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.azbuilder.api.client.model.generic.Resource;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.OrganizationResponse;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.job.JobResponse;
+import org.azbuilder.api.client.model.organization.module.ModuleResponse;
 import org.azbuilder.api.client.model.organization.module.definition.Definition;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.Parameter;
 import org.azbuilder.api.client.model.organization.module.definition.parameter.ParameterResponse;
@@ -25,7 +27,7 @@ import java.util.List;
 public interface RestClient {
 
     @RequestLine("GET /api/v1/organization")
-    OrganizationResponse<List<Organization>, Void> getAllOrganizations();
+    OrganizationResponse<List<Organization>, Resource> getAllOrganizations();
 
     @RequestLine("GET /api/v1/organization?filter[job]=status=={jobStatus}&include=job")
     OrganizationResponse<List<Organization>, Job> getAllOrganizationsWithJobStatus(@Param("jobStatus") String jobStatus);
@@ -43,7 +45,7 @@ public interface RestClient {
     EnvironmentResponse<List<Environment>> getAllEnvironmentVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace")
-    WorkspaceResponse<List<Workspace>, Void> getAllWorkspaces(@Param("organizationId") String organizationId);
+    WorkspaceResponse<List<Workspace>, Resource> getAllWorkspaces(@Param("organizationId") String organizationId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=definition")
     WorkspaceResponse<Workspace, Definition> getWorkspaceByIdWithModuleDefinition(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
@@ -63,5 +65,11 @@ public interface RestClient {
 
     @RequestLine("GET /api/v1/organization/{organizationId}/job/{jobId}")
     JobResponse getJobById(@Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
+    @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}")
+    OrganizationResponse<List<Organization>, Resource> getOrganizationByName(@Param("organizationName") String organizationName);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/module?include=definition&filter[module]=name=={moduleName};provider=={providerName}")
+    ModuleResponse<List<Organization>, Definition> getModuleByNameAndProviderWithModuleDefinition(@Param("organizationId") String organizationId, @Param("moduleName") String moduleName, @Param("providerName") String providerName);
 
 }

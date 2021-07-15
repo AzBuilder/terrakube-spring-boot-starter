@@ -7,6 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ModuleResponse {
-    List<Module> data;
+public class ModuleResponse<T1,T2> {
+    T1 data;
+    List<T2> included;
 }
