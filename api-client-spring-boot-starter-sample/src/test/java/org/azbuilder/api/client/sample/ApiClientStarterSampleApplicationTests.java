@@ -1,6 +1,5 @@
 package org.azbuilder.api.client.sample;
 
-import org.azbuilder.api.client.model.organization.JobData;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
@@ -60,6 +59,10 @@ class ApiClientStarterSampleApplicationTests {
 
 		restClient.updateJob(jobRequest, job.getRelationships().getOrganization().getData().getId(), job.getId());
 
-		restClient.updateJob(jobRequest,organizationId, "1");*/
+		restClient.updateJob(jobRequest,organizationId, "1");
+
+		System.out.println(restClient.getModuleByNameAndProvider(organizationId, "azure","azurerm").getData().get(0).getAttributes().getSource());
+		*/
+
 	}
 }

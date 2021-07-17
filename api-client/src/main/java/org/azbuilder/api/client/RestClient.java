@@ -6,6 +6,7 @@ import feign.RequestLine;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
+import org.azbuilder.api.client.model.organization.module.Module;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
 import org.azbuilder.api.client.model.organization.workspace.environment.Environment;
 import org.azbuilder.api.client.model.organization.workspace.secret.Secret;
@@ -56,5 +57,9 @@ public interface RestClient {
 
     @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}")
     Response<List<Organization>> getOrganizationByName(@Param("organizationName") String organizationName);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/module?filter[module]=name=={moduleName};provider=={providerName}")
+    Response<List<Module>> getModuleByNameAndProvider(@Param("organizationId") String organizationId, @Param("moduleName") String moduleName, @Param("providerName") String providerName);
+
 
 }
