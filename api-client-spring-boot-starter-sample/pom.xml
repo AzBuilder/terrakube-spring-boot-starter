@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<revision>0.2.0</revision>
+		<revision>0.3.0</revision>
 		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 	<dependencies>

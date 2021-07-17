@@ -9,6 +9,6 @@ import java.util.HashMap;
 @Getter
 @Setter
 public class Secret extends Resource {
-    HashMap<String, String> attributes;
+    SecretAttributes attributes;
     Relationships relationships;
 }

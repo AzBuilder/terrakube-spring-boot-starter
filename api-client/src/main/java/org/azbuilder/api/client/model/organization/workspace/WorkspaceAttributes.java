@@ -7,7 +7,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class WorkspaceResponse<T1,T2> {
-    T1 data;
-    List<T2> included;
+public class WorkspaceAttributes {
+    private String branch;
+    private String source;
+    private String name;
+    private String terraformVersion;
 }

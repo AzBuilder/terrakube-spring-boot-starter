@@ -6,7 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Relationships {
-
     OrganizationData organization;
     WorkspaceData workspace;
 }

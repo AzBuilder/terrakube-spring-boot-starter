@@ -9,6 +9,6 @@ import java.util.HashMap;
 @Getter
 @Setter
 public class Workspace extends Resource {
-    HashMap<String, String> attributes;
+    WorkspaceAttributes attributes;
     Relationships relationships;
 }
