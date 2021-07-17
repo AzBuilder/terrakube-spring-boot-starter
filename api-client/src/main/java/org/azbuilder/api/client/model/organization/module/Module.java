@@ -9,6 +9,6 @@ import java.util.HashMap;
 @Getter
 @Setter
 public class Module extends Resource {
-    HashMap<String, String> attributes;
+    ModuleAttributes attributes;
     Relationships relationships;
 }

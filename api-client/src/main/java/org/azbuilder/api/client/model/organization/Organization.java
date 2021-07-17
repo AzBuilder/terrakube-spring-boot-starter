@@ -9,6 +9,6 @@ import java.util.HashMap;
 @Getter
 @Setter
 public class Organization extends Resource{
-    HashMap<String, String> attributes;
+    OrganizationAttributes attributes;
     Relationships relationships;
 }
