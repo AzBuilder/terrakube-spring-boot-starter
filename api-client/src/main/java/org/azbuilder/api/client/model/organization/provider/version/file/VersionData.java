@@ -6,6 +6,6 @@ import org.azbuilder.api.client.model.generic.Resource;
 
 @Getter
 @Setter
-public class ProviderData {
+public class VersionData {
     Resource data;
 }
