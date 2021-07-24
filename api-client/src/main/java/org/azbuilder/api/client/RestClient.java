@@ -67,7 +67,7 @@ public interface RestClient {
     Response<List<Organization>> getOrganizationsByNameAndProvider(@Param("organizationName") String organizationName, @Param("providerName") String providerName);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version?filter[version]=versionNumber=={versionNumber}")
-    Response<List<Version>> getVersionsByVersionNumber(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionNumber") String versionNumber);
+    Response<List<Version>> getVersionsByOrganizationIdAndProviderIdAndVersionNumber(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionNumber") String versionNumber);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version/{versionId}/file?filter[file]=os=={os};arch=={arch}")
     Response<List<File>> getImplementationsByOsArchVersion(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionId") String versionId, @Param("os") String os, @Param("arch") String arch);
