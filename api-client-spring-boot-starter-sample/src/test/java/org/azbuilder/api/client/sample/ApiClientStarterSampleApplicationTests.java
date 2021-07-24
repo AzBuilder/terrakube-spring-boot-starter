@@ -71,13 +71,13 @@ class ApiClientStarterSampleApplicationTests {
 		System.out.println(listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId());
 
 		Response<List<Version>> listVersion =
-				restClient.getVersionsByVersionNumber(
+				restClient.getVersionsByOrganizationIdAndProviderIdAndVersionNumber(
 						listResponse.getData().get(0).getId(),
 						listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
 						"1");
 
 
-		Response<List<File>>  files= restClient.getImplementationsByOsArchVersion(
+		Response<List<File>>  files= restClient.getFileByOsArchVersion(
 				listResponse.getData().get(0).getId(),
 				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
 				listVersion.getData().get(0).getId(),
@@ -85,7 +85,12 @@ class ApiClientStarterSampleApplicationTests {
 				"amd64");
 
 		System.out.println(files.getData().get(0).getId());
-		System.out.println(files.getData().get(0).getAttributes().getFilename());*/
+		System.out.println(files.getData().get(0).getAttributes().getFilename());
+
+
+
+		System.out.println(restClient.getAllVersionsByProvider(listResponse.getData().get(0).getId(),
+				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId()).getIncluded().size());*/
 
 	}
 }
