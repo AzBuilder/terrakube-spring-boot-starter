@@ -9,4 +9,5 @@ public class Relationships {
     JobData job;
     ModuleData module;
     WorkspaceData workspace;
+    ProviderData provider;
 }
