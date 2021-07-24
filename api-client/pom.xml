@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<revision>0.3.1</revision>
+		<revision>0.4.0</revision>
 		<feign.version>11.1</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
 		<maven.deploy.skip>false</maven.deploy.skip>

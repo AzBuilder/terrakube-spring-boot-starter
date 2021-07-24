@@ -1,9 +1,8 @@
 package org.azbuilder.api.client.sample;
 
 import org.azbuilder.api.client.model.organization.Organization;
-import org.azbuilder.api.client.model.organization.job.Job;
-import org.azbuilder.api.client.model.organization.job.JobRequest;
-import org.azbuilder.api.client.model.organization.workspace.Workspace;
+import org.azbuilder.api.client.model.organization.provider.version.Version;
+import org.azbuilder.api.client.model.organization.provider.version.file.File;
 import org.azbuilder.api.client.model.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +62,35 @@ class ApiClientStarterSampleApplicationTests {
 
 		System.out.println(restClient.getModuleByNameAndProvider(organizationId, "azure","azurerm").getData().get(0).getAttributes().getSource());
 		*/
+
+/*
+		Response<List<Organization>> listResponse =
+				restClient.getOrganizationsByNameAndProvider("sampleOrg","sampleProvider");
+
+		System.out.println(listResponse.getData().get(0).getId());
+		System.out.println(listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId());
+
+		Response<List<Version>> listVersion =
+				restClient.getVersionsByOrganizationIdAndProviderIdAndVersionNumber(
+						listResponse.getData().get(0).getId(),
+						listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
+						"1");
+
+
+		Response<List<File>>  files= restClient.getFileByOsArchVersion(
+				listResponse.getData().get(0).getId(),
+				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
+				listVersion.getData().get(0).getId(),
+				"linux",
+				"amd64");
+
+		System.out.println(files.getData().get(0).getId());
+		System.out.println(files.getData().get(0).getAttributes().getFilename());
+
+
+
+		System.out.println(restClient.getAllVersionsByProvider(listResponse.getData().get(0).getId(),
+				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId()).getIncluded().size());*/
 
 	}
 }

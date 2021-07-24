@@ -7,6 +7,8 @@ import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.module.Module;
+import org.azbuilder.api.client.model.organization.provider.version.Version;
+import org.azbuilder.api.client.model.organization.provider.version.file.File;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
 import org.azbuilder.api.client.model.organization.workspace.environment.Environment;
 import org.azbuilder.api.client.model.organization.workspace.secret.Secret;
@@ -61,5 +63,16 @@ public interface RestClient {
     @RequestLine("GET /api/v1/organization/{organizationId}/module?filter[module]=name=={moduleName};provider=={providerName}")
     Response<List<Module>> getModuleByNameAndProvider(@Param("organizationId") String organizationId, @Param("moduleName") String moduleName, @Param("providerName") String providerName);
 
+    @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}&filter[provider]=name=={providerName}")
+    Response<List<Organization>> getOrganizationsByNameAndProvider(@Param("organizationName") String organizationName, @Param("providerName") String providerName);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version?include=file")
+    ResponseWithInclude<List<Version>, File> getAllVersionsByProviderWithFile(@Param("organizationId") String organizationId, @Param("providerId") String providerId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version?filter[version]=versionNumber=={versionNumber}")
+    Response<List<Version>> getVersionsByOrganizationIdAndProviderIdAndVersionNumber(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionNumber") String versionNumber);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version/{versionId}/file?filter[file]=os=={os};arch=={arch}")
+    Response<List<File>> getFileByOsArchVersion(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionId") String versionId, @Param("os") String os, @Param("arch") String arch);
 
 }
