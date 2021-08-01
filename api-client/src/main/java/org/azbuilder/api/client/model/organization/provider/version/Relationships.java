@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Relationships {
-    FileData file;
+    ImplementationData implementation;
     ProviderData provider;
 }
