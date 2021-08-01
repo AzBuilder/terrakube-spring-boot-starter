@@ -1,11 +1,11 @@
-package org.azbuilder.api.client.model.organization.provider.version.file;
+package org.azbuilder.api.client.model.organization.provider.version.implementation;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class FileAttributes {
+public class ImplementationAttributes {
     private String os;
     private String arch;
     private String filename;

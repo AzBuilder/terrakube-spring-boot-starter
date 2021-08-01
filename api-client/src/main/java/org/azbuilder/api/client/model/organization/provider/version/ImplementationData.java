@@ -8,6 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FileData {
+public class ImplementationData {
     List<Resource> data;
 }

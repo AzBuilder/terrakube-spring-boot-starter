@@ -2,7 +2,7 @@ package org.azbuilder.api.client.sample;
 
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
-import org.azbuilder.api.client.model.organization.provider.version.file.File;
+import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
 import org.azbuilder.api.client.model.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +63,7 @@ class ApiClientStarterSampleApplicationTests {
 		System.out.println(restClient.getModuleByNameAndProvider(organizationId, "azure","azurerm").getData().get(0).getAttributes().getSource());
 		*/
 
-/*
+		/*
 		Response<List<Organization>> listResponse =
 				restClient.getOrganizationsByNameAndProvider("sampleOrg","sampleProvider");
 
@@ -74,14 +74,14 @@ class ApiClientStarterSampleApplicationTests {
 				restClient.getVersionsByOrganizationIdAndProviderIdAndVersionNumber(
 						listResponse.getData().get(0).getId(),
 						listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
-						"1");
+						"2.0.0");
 
-
-		Response<List<File>>  files= restClient.getFileByOsArchVersion(
+		System.out.println(listVersion.getData().get(0).getId());
+		Response<List<Implementation>>  files= restClient.getImplementationByOsArchVersion(
 				listResponse.getData().get(0).getId(),
 				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId(),
 				listVersion.getData().get(0).getId(),
-				"linux",
+				"darwin",
 				"amd64");
 
 		System.out.println(files.getData().get(0).getId());
@@ -89,7 +89,7 @@ class ApiClientStarterSampleApplicationTests {
 
 
 
-		System.out.println(restClient.getAllVersionsByProvider(listResponse.getData().get(0).getId(),
+		System.out.println(restClient.getAllVersionsByProviderWithImplementation(listResponse.getData().get(0).getId(),
 				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId()).getIncluded().size());*/
 
 	}
