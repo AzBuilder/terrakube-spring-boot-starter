@@ -8,4 +8,8 @@ import lombok.Setter;
 public class VariableAttributes {
     private String key;
     private String value;
+    private boolean sensitive;
+    private boolean hcl;
+    private String category;
+    private String description;
 }

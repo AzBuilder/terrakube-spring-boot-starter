@@ -3,6 +3,8 @@ package org.azbuilder.api.client.sample;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
+import org.azbuilder.api.client.model.organization.workspace.Workspace;
+import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,9 @@ class ApiClientStarterSampleApplicationTests {
 	@Test
 	void contextLoads() {
 		assertNotNull(restClient);
-		/*
+/*
 		restClient.getAllOrganizations().getData().size();
-		Response<List<Organization>> organizationResponse = restClient.getOrganizationByName("organization1");
+		Response<List<Organization>> organizationResponse = restClient.getOrganizationByName("hashicorp");
 
 		System.out.println("Organization");
 		System.out.println(organizationResponse.getData().size());
@@ -43,13 +45,15 @@ class ApiClientStarterSampleApplicationTests {
 		System.out.println(restClient.getAllEnvironmentVariables(organizationId,  workspaceData.getId()).getData().size());
 		System.out.println(restClient.getAllSecrets(organizationId,  workspaceData.getId()).getData().size());
 
-		System.out.println("pending");
-		System.out.println(restClient.getAllOrganizationsWithJobStatus("pending").getIncluded().size());
+		//System.out.println("pending");
+		//System.out.println(restClient.getAllOrganizationsWithJobStatus("pending").getIncluded().size());
 
-		restClient.getWorkspaceByIdWithEnvironmentVariables(organizationId, workspaceData.getId());
-		restClient.getWorkspaceByIdWithVariables(organizationId, workspaceData.getId());
-		restClient.getWorkspaceByIdWithSecrets(organizationId, workspaceData.getId());
+		for (Variable variable : restClient.getWorkspaceByIdWithVariables(organizationId, workspaceData.getId()).getIncluded()) {
+			System.out.println(variable.getAttributes().getCategory());
+			System.out.println(variable.getAttributes().getValue());
+		}
 
+		/*
 		Job job = restClient.getJobById(organizationId, "1").getData();
 		job.getAttributes().setStatus("completed");
 
@@ -61,9 +65,7 @@ class ApiClientStarterSampleApplicationTests {
 		restClient.updateJob(jobRequest,organizationId, "1");
 
 		System.out.println(restClient.getModuleByNameAndProvider(organizationId, "azure","azurerm").getData().get(0).getAttributes().getSource());
-		*/
 
-		/*
 		Response<List<Organization>> listResponse =
 				restClient.getOrganizationsByNameAndProvider("sampleOrg","sampleProvider");
 
