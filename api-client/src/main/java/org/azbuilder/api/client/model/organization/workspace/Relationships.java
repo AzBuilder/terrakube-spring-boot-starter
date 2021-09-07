@@ -1,12 +1,13 @@
 package org.azbuilder.api.client.model.organization.workspace;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Relationships {
 
-    DefinitionData definition;
-    EnvironmentData environment;
     JobData job;
     OrganizationData organization;
-    SecretData secret;
     VariableData variable;
 }
