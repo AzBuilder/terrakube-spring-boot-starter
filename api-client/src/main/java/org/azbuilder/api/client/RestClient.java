@@ -9,6 +9,7 @@ import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.module.Module;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
+import org.azbuilder.api.client.model.organization.vcs.Vcs;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
 import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.response.Response;
@@ -72,5 +73,8 @@ public interface RestClient {
 
     @RequestLine("GET /api/v1/organization/{organizationId}/provider/{providerId}/version/{versionId}/implementation?filter[implementation]=os=={os};arch=={arch}")
     Response<List<Implementation>> getImplementationByOsArchVersion(@Param("organizationId") String organizationId, @Param("providerId") String providerId, @Param("versionId") String versionId, @Param("os") String os, @Param("arch") String arch);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}")
+    Response<Vcs> getVcsById(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId);
 
 }

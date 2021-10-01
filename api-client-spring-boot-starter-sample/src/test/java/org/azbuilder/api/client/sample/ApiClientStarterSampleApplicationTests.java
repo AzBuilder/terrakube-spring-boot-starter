@@ -3,6 +3,7 @@ package org.azbuilder.api.client.sample;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
+import org.azbuilder.api.client.model.organization.vcs.Vcs;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
 import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.response.Response;
@@ -23,7 +24,8 @@ class ApiClientStarterSampleApplicationTests {
 	@Test
 	void contextLoads() {
 		assertNotNull(restClient);
-/*
+
+		/*
 		restClient.getAllOrganizations().getData().size();
 		Response<List<Organization>> organizationResponse = restClient.getOrganizationByName("hashicorp");
 
@@ -35,23 +37,36 @@ class ApiClientStarterSampleApplicationTests {
 		System.out.println(restClient.getAllWorkspaces(organizationResponse.getData().get(0).getId()).getData().size());
 		Workspace workspaceData = restClient.getAllWorkspaces(organizationResponse.getData().get(0).getId()).getData().get(0);
 
-		System.out.println(workspaceData.getAttributes().getBranch());
-		System.out.println(workspaceData.getAttributes().getName());
-		System.out.println(workspaceData.getAttributes().getSource());
-		System.out.println(workspaceData.getAttributes().getTerraformVersion());
+		//System.out.println(workspaceData.getAttributes().getBranch());
+		//System.out.println(workspaceData.getAttributes().getName());
+		//System.out.println(workspaceData.getAttributes().getSource());
+		//System.out.println(workspaceData.getAttributes().getTerraformVersion());
 
 		System.out.println(workspaceData.getId());
-		System.out.println(restClient.getAllVariables(organizationId, workspaceData.getId()).getData().size());
-		System.out.println(restClient.getAllEnvironmentVariables(organizationId,  workspaceData.getId()).getData().size());
-		System.out.println(restClient.getAllSecrets(organizationId,  workspaceData.getId()).getData().size());
+
+		//VCS INFORMATION
+		System.out.println(workspaceData.getRelationships().getVcs().getData());
+		System.out.println(workspaceData.getRelationships().getVcs().getData().getId());
+		//System.out.println(organizationResponse.getData().get(0).getRelationships().getVcs().getData());
+		//System.out.println(organizationResponse.getData().get(0).getRelationships().getVcs().getData().get(0).getId());
+
+		//Vcs vcs = restClient.getVcsById(organizationId, workspaceData.getRelationships().getVcs().getData().getId()).getData();
+		//System.out.println(vcs.getAttributes().getClientId());
+		//System.out.println(vcs.getAttributes().getClientSecret());
+		//System.out.println(vcs.getAttributes().getAccessToken());
+		//System.out.println(vcs.getAttributes().getName());
+		//System.out.println(vcs.getAttributes().getDescription());
+		//System.out.println(restClient.getAllVariables(organizationId, workspaceData.getId()).getData().size());
+		//System.out.println(restClient.getAllEnvironmentVariables(organizationId,  workspaceData.getId()).getData().size());
+		//System.out.println(restClient.getAllSecrets(organizationId,  workspaceData.getId()).getData().size());
 
 		//System.out.println("pending");
 		//System.out.println(restClient.getAllOrganizationsWithJobStatus("pending").getIncluded().size());
 
-		for (Variable variable : restClient.getWorkspaceByIdWithVariables(organizationId, workspaceData.getId()).getIncluded()) {
-			System.out.println(variable.getAttributes().getCategory());
-			System.out.println(variable.getAttributes().getValue());
-		}
+		//for (Variable variable : restClient.getWorkspaceByIdWithVariables(organizationId, workspaceData.getId()).getIncluded()) {
+		//	System.out.println(variable.getAttributes().getCategory());
+		//	System.out.println(variable.getAttributes().getValue());
+		//}
 
 		/*
 		Job job = restClient.getJobById(organizationId, "1").getData();
