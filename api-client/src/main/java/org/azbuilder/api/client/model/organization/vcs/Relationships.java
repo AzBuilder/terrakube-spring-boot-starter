@@ -1,4 +1,4 @@
-package org.azbuilder.api.client.model.organization.workspace;
+package org.azbuilder.api.client.model.organization.vcs;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,9 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Relationships {
-
-    JobData job;
     OrganizationData organization;
-    VariableData variable;
-    VcsData vcs;
 }
