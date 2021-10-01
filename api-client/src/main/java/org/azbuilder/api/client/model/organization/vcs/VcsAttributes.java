@@ -11,5 +11,5 @@ public class VcsAttributes {
     private String clientId;
     private String clientSecret;
     private String accessToken;
-    private String VcsType;
+    private String vcsType;
 }
