@@ -10,4 +10,5 @@ public class Relationships {
     ModuleData module;
     WorkspaceData workspace;
     ProviderData provider;
+    VcsData vcs;
 }

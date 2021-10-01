@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.3</version>
+		<version>2.4.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.azbuilder.api.spring.autoconfigure</groupId>
 	<artifactId>api-client-spring-boot-autoconfigure</artifactId>
 	<version>${revision}</version>
-	<name>api-client-spring-boot-autoconfigure</name>
-	<description>Demo project for Spring Boot</description>
+	<name>terrakube-spring-boot-autoconfigure</name>
+	<description>Terrakube Spring Boot autoconfigure</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
