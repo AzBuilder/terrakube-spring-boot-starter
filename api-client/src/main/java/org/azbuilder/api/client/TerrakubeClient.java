@@ -6,9 +6,12 @@ import feign.RequestLine;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.job.Job;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
+import org.azbuilder.api.client.model.organization.job.step.Step;
+import org.azbuilder.api.client.model.organization.job.step.StepRequest;
 import org.azbuilder.api.client.model.organization.module.Module;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
+import org.azbuilder.api.client.model.organization.template.Template;
 import org.azbuilder.api.client.model.organization.vcs.Vcs;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
 import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
@@ -17,7 +20,7 @@ import org.azbuilder.api.client.model.response.ResponseWithInclude;
 
 import java.util.List;
 
-public interface RestClient {
+public interface TerrakubeClient {
 
     @RequestLine("GET /api/v1/organization")
     Response<List<Organization>> getAllOrganizations();
@@ -43,18 +46,20 @@ public interface RestClient {
     @RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=variable")
     ResponseWithInclude<Workspace, Variable> getWorkspaceByIdWithVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
-    //@RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=secret") //*
-    //ResponseWithInclude<Workspace, Secret> getWorkspaceByIdWithSecrets(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
-
-    //@RequestLine("GET /api/v1/organization/{organizationId}/workspace/{workspaceId}?include=environment") //*
-    //ResponseWithInclude<Workspace, Environment> getWorkspaceByIdWithEnvironmentVariables(@Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
-
     @RequestLine("PATCH /api/v1/organization/{organizationId}/job/{jobId}")
     @Headers("Content-Type: application/vnd.api+json")
     void updateJob(JobRequest jobRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId);
 
-    @RequestLine("GET /api/v1/organization/{organizationId}/job/{jobId}")
-    Response<Job> getJobById(@Param("organizationId") String organizationId, @Param("jobId") String jobId);
+    @RequestLine("GET /api/v1/organization/{organizationId}/job/{jobId}?include=step")
+    ResponseWithInclude<Job, Step>getJobById(@Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
+    @RequestLine("POST /api/v1/organization/{organizationId}/job/{jobId}/step")
+    @Headers("Content-Type: application/vnd.api+json")
+    void createStep(StepRequest stepRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
+    @RequestLine("PATCH /api/v1/organization/{organizationId}/job/{jobId}/step/{stepId}")
+    @Headers("Content-Type: application/vnd.api+json")
+    void updateStep(StepRequest stepRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId, @Param("stepId") String stepId);
 
     @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}")
     Response<List<Organization>> getOrganizationByName(@Param("organizationName") String organizationName);
@@ -76,5 +81,8 @@ public interface RestClient {
 
     @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}")
     Response<Vcs> getVcsById(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/template/{templateId}")
+    Response<Template> getTemplateById(@Param("organizationId") String organizationId, @Param("templateId") String templateId);
 
 }

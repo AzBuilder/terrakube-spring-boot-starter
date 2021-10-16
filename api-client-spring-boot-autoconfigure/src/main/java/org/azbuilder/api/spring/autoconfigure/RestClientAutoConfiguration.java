@@ -4,7 +4,7 @@ import feign.Feign;
 import feign.Logger;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
-import org.azbuilder.api.client.RestClient;
+import org.azbuilder.api.client.TerrakubeClient;
 import org.azbuilder.api.client.security.azure.ClientCredentialAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -16,14 +16,14 @@ import feign.gson.GsonEncoder;
 
 @Configuration
 @EnableConfigurationProperties(RestClientProperties.class)
-@ConditionalOnMissingBean(RestClient.class)
+@ConditionalOnMissingBean(TerrakubeClient.class)
 public class RestClientAutoConfiguration {
 
     @Autowired
     private RestClientProperties restClientProperties;
 
     @Bean
-    public RestClient restClient(RestClientProperties restClientProperties) {
+    public TerrakubeClient restClient(RestClientProperties restClientProperties) {
 
         ClientCredentialAuthentication clientCredentialAuthentication = new ClientCredentialAuthentication(
                 restClientProperties.getTenantId(),
@@ -37,13 +37,13 @@ public class RestClientAutoConfiguration {
                 .addInterceptor(clientCredentialAuthentication)
                 .build();
 
-        RestClient restClient = Feign.builder()
+        TerrakubeClient restClient = Feign.builder()
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .client(new OkHttpClient(customHttpClient))
                 //.logger(new Slf4jLogger())
                 //.logLevel(Logger.Level.FULL)
-                .target(RestClient.class, restClientProperties.getUrl());
+                .target(TerrakubeClient.class, restClientProperties.getUrl());
         return restClient;
     }
 }
