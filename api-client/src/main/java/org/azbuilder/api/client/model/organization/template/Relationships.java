@@ -1,4 +1,4 @@
-package org.azbuilder.api.client.model.organization.job;
+package org.azbuilder.api.client.model.organization.template;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +7,4 @@ import lombok.Setter;
 @Setter
 public class Relationships {
     OrganizationData organization;
-    WorkspaceData workspace;
-    StepData step;
 }
