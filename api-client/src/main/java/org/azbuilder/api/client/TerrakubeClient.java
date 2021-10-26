@@ -14,6 +14,7 @@ import org.azbuilder.api.client.model.organization.provider.version.implementati
 import org.azbuilder.api.client.model.organization.template.Template;
 import org.azbuilder.api.client.model.organization.vcs.Vcs;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
+import org.azbuilder.api.client.model.organization.workspace.history.HistoryRequest;
 import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.response.Response;
 import org.azbuilder.api.client.model.response.ResponseWithInclude;
@@ -56,6 +57,10 @@ public interface TerrakubeClient {
     @RequestLine("POST /api/v1/organization/{organizationId}/job/{jobId}/step")
     @Headers("Content-Type: application/vnd.api+json")
     void createStep(StepRequest stepRequest, @Param("organizationId") String organizationId, @Param("jobId") String jobId);
+
+    @RequestLine("POST /api/v1/organization/{organizationId}/workspace/{workspaceId}/history")
+    @Headers("Content-Type: application/vnd.api+json")
+    void createHistory(HistoryRequest historyRequest, @Param("organizationId") String organizationId, @Param("workspaceId") String workspaceId);
 
     @RequestLine("PATCH /api/v1/organization/{organizationId}/job/{jobId}/step/{stepId}")
     @Headers("Content-Type: application/vnd.api+json")

@@ -15,7 +15,7 @@
 	<description>Java Terrakube client</description>
 	<properties>
 		<java.version>11</java.version>
-		<revision>0.7.0-beta.1</revision>
+		<revision>0.7.0-beta.2</revision>
 		<feign.version>11.6</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
 		<maven.deploy.skip>false</maven.deploy.skip>
