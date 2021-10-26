@@ -11,6 +11,9 @@ import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
 import org.azbuilder.api.client.model.organization.vcs.Vcs;
 import org.azbuilder.api.client.model.organization.workspace.Workspace;
+import org.azbuilder.api.client.model.organization.workspace.history.History;
+import org.azbuilder.api.client.model.organization.workspace.history.HistoryAttributes;
+import org.azbuilder.api.client.model.organization.workspace.history.HistoryRequest;
 import org.azbuilder.api.client.model.organization.workspace.variable.Variable;
 import org.azbuilder.api.client.model.response.Response;
 import org.junit.jupiter.api.Test;
@@ -29,6 +32,16 @@ class ApiClientStarterSampleApplicationTests {
 	@Test
 	void contextLoads() {
 		assertNotNull(restClient);
+/*
+		HistoryRequest historyRequest = new HistoryRequest();
+		History newHistory = new History();
+		newHistory.setType("history");
+		HistoryAttributes historyAttributes = new HistoryAttributes();
+		historyAttributes.setOutput("HolaMundo333333");
+		newHistory.setAttributes(historyAttributes);
+		historyRequest.setData(newHistory);
+
+		restClient.createHistory(historyRequest,"4918ee6f-ffaf-4532-a370-d8c06e45eb4d", "21bb4721-4760-49f0-a7c7-bd6072081be9" );
 
 /*
 		restClient.getAllOrganizations().getData().size();
