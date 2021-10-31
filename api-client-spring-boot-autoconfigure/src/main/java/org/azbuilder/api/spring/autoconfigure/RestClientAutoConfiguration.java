@@ -24,26 +24,35 @@ public class RestClientAutoConfiguration {
 
     @Bean
     public TerrakubeClient restClient(RestClientProperties restClientProperties) {
+        TerrakubeClient restClient = null;
+        if (restClientProperties.isEnableSecurity()) {
+            ClientCredentialAuthentication clientCredentialAuthentication = new ClientCredentialAuthentication(
+                    restClientProperties.getTenantId(),
+                    restClientProperties.getClientId(),
+                    restClientProperties.getClientSecret(),
+                    restClientProperties.getScope()
+            );
 
-        ClientCredentialAuthentication clientCredentialAuthentication = new ClientCredentialAuthentication(
-                restClientProperties.getTenantId(),
-                restClientProperties.getClientId(),
-                restClientProperties.getClientSecret(),
-                restClientProperties.getScope()
-        );
+            okhttp3.OkHttpClient customHttpClient = new okhttp3.OkHttpClient.Builder()
+                    .authenticator(clientCredentialAuthentication)
+                    .addInterceptor(clientCredentialAuthentication)
+                    .build();
 
-        okhttp3.OkHttpClient customHttpClient = new okhttp3.OkHttpClient.Builder()
-                .authenticator(clientCredentialAuthentication)
-                .addInterceptor(clientCredentialAuthentication)
-                .build();
+            restClient = Feign.builder()
+                    .encoder(new GsonEncoder())
+                    .decoder(new GsonDecoder())
+                    .client(new OkHttpClient(customHttpClient))
+                    .target(TerrakubeClient.class, restClientProperties.getUrl());
+        }else{
+            restClient = Feign.builder()
+                    .encoder(new GsonEncoder())
+                    .decoder(new GsonDecoder())
+                    .logger(new Slf4jLogger())
+                    .logLevel(Logger.Level.FULL)
+                    .target(TerrakubeClient.class, restClientProperties.getUrl());
+        }
 
-        TerrakubeClient restClient = Feign.builder()
-                .encoder(new GsonEncoder())
-                .decoder(new GsonDecoder())
-                .client(new OkHttpClient(customHttpClient))
-                //.logger(new Slf4jLogger())
-                //.logLevel(Logger.Level.FULL)
-                .target(TerrakubeClient.class, restClientProperties.getUrl());
+
         return restClient;
     }
 }
