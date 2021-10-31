@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-@PropertySources({
-        @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true),
-        @PropertySource(value = "classpath:application-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
-})
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "classpath:application-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 @ConfigurationProperties(prefix = "org.azbuilder.api")
 public class RestClientProperties {
+    private boolean enableSecurity;
     private String url;
     private String clientId;
     private String clientSecret;

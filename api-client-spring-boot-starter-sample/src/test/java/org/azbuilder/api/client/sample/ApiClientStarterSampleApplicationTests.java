@@ -43,7 +43,6 @@ class ApiClientStarterSampleApplicationTests {
 
 		restClient.createHistory(historyRequest,"4918ee6f-ffaf-4532-a370-d8c06e45eb4d", "21bb4721-4760-49f0-a7c7-bd6072081be9" );
 
-/*
 		restClient.getAllOrganizations().getData().size();
 		Response<List<Organization>> organizationResponse = restClient.getOrganizationByName("hashicorp");
 
@@ -62,6 +61,7 @@ class ApiClientStarterSampleApplicationTests {
 
 		System.out.println(workspaceData.getId());
 
+		/*
 		//VCS INFORMATION
 		//System.out.println(workspaceData.getRelationships().getVcs().getData());
 		//System.out.println(workspaceData.getRelationships().getVcs().getData().getId());
