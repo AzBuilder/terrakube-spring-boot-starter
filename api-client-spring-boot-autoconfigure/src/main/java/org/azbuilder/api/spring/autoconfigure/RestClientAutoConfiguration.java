@@ -48,6 +48,7 @@ public class RestClientAutoConfiguration {
                     .encoder(new GsonEncoder())
                     .decoder(new GsonDecoder())
                     .logger(new Slf4jLogger())
+                    .client(new OkHttpClient())
                     .logLevel(Logger.Level.FULL)
                     .target(TerrakubeClient.class, restClientProperties.getUrl());
         }
