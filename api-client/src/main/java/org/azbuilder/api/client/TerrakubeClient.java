@@ -9,6 +9,7 @@ import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.job.step.Step;
 import org.azbuilder.api.client.model.organization.job.step.StepRequest;
 import org.azbuilder.api.client.model.organization.module.Module;
+import org.azbuilder.api.client.model.organization.module.ModuleRequest;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
 import org.azbuilder.api.client.model.organization.template.Template;
@@ -71,6 +72,13 @@ public interface TerrakubeClient {
 
     @RequestLine("GET /api/v1/organization/{organizationId}/module?filter[module]=name=={moduleName};provider=={providerName}")
     Response<List<Module>> getModuleByNameAndProvider(@Param("organizationId") String organizationId, @Param("moduleName") String moduleName, @Param("providerName") String providerName);
+
+    @RequestLine("GET /api/v1/organization/{organizationId}/module/{moduleId}")
+    Response<Module> getModuleById(@Param("organizationId") String organizationId, @Param("moduleId") String moduleId);
+
+    @RequestLine("PATCH /api/v1/organization/{organizationId}/module/{moduleId}")
+    @Headers("Content-Type: application/vnd.api+json")
+    void updateModule(ModuleRequest moduleRequest, @Param("organizationId") String organizationId, @Param("moduleId") String moduleId);
 
     @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}&filter[provider]=name=={providerName}")
     Response<List<Organization>> getOrganizationsByNameAndProvider(@Param("organizationName") String organizationName, @Param("providerName") String providerName);
