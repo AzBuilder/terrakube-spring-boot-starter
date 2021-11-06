@@ -12,7 +12,7 @@ public class ModuleAttributes {
     private String description;
     private String provider;
     private String source;
-    private String sourceSample;
+    private int downloadQuantity;
     private String registryPath;
     private List<String> versions;
 }

@@ -6,9 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class JobAttributes {
-    private String command;
     private String output;
     private String status;
     private String terraformPlan;
     private String tcl;
+    private String approvalTeam;
 }

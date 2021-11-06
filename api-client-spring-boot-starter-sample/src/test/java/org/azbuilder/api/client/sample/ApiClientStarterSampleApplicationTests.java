@@ -3,10 +3,14 @@ package org.azbuilder.api.client.sample;
 import org.azbuilder.api.client.TerrakubeClient;
 import org.azbuilder.api.client.model.organization.Organization;
 import org.azbuilder.api.client.model.organization.job.Job;
+import org.azbuilder.api.client.model.organization.job.JobAttributes;
 import org.azbuilder.api.client.model.organization.job.JobRequest;
 import org.azbuilder.api.client.model.organization.job.step.Step;
 import org.azbuilder.api.client.model.organization.job.step.StepAttributes;
 import org.azbuilder.api.client.model.organization.job.step.StepRequest;
+import org.azbuilder.api.client.model.organization.module.Module;
+import org.azbuilder.api.client.model.organization.module.ModuleAttributes;
+import org.azbuilder.api.client.model.organization.module.ModuleRequest;
 import org.azbuilder.api.client.model.organization.provider.version.Version;
 import org.azbuilder.api.client.model.organization.provider.version.implementation.Implementation;
 import org.azbuilder.api.client.model.organization.vcs.Vcs;
@@ -19,6 +23,7 @@ import org.azbuilder.api.client.model.response.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
@@ -26,12 +31,35 @@ import java.util.List;
 @SpringBootTest
 class ApiClientStarterSampleApplicationTests {
 
-	@Autowired
-	TerrakubeClient restClient;
+    @Autowired
+    TerrakubeClient restClient;
 
-	@Test
-	void contextLoads() {
-		assertNotNull(restClient);
+    @Test
+    void contextLoads() {
+        assertNotNull(restClient);
+/*
+        Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
+
+        System.out.println(moduleTemp.getAttributes().getDownloadQuantity());
+
+        ModuleRequest moduleRequest = new ModuleRequest();
+        ModuleAttributes moduleAttributes = new ModuleAttributes();
+        moduleAttributes.setDownloadQuantity(moduleTemp.getAttributes().getDownloadQuantity() + 1);
+        moduleTemp.setAttributes(moduleAttributes);
+        moduleRequest.setData(moduleTemp);
+
+        restClient.updateModule(moduleRequest, "0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19");
+
+        String workspaceId = "7afc4a1f-b6cb-430a-bfaa-15ae72c85daa";
+
+        JobRequest jobRequest = new JobRequest();
+        Job job= restClient.getJobById("0faca394-14b3-40cb-b0d6-0775673259cf", "1").getData();
+        job.getAttributes().setApprovalTeam("");
+        jobRequest.setData(job);
+
+        restClient.updateJob(jobRequest,"0faca394-14b3-40cb-b0d6-0775673259cf", "1");
+
+
 /*
 		HistoryRequest historyRequest = new HistoryRequest();
 		History newHistory = new History();
@@ -150,5 +178,5 @@ class ApiClientStarterSampleApplicationTests {
 		System.out.println(restClient.getAllVersionsByProviderWithImplementation(listResponse.getData().get(0).getId(),
 				listResponse.getData().get(0).getRelationships().getProvider().getData().get(0).getId()).getIncluded().size());*/
 
-	}
+    }
 }
