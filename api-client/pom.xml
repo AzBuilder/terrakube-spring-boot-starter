@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.11</version>
+		<version>2.5.8</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.azbuilder.api.client</groupId>
@@ -15,7 +15,7 @@
 	<description>Java Terrakube client</description>
 	<properties>
 		<java.version>11</java.version>
-		<revision>0.8.0</revision>
+		<revision>0.8.1</revision>
 		<feign.version>11.8</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
 		<maven.deploy.skip>false</maven.deploy.skip>
