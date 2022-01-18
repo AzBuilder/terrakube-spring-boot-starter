@@ -9,4 +9,5 @@ public class StepAttributes {
     private String stepNumber;
     private String output;
     private String status;
+    private String name;
 }
