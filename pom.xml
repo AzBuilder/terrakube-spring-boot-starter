@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <revision>0.8.2</revision>
+        <revision>0.8.3</revision>
         <maven.deploy.skip>true</maven.deploy.skip>
         <sonar.organization>azbuilder</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>

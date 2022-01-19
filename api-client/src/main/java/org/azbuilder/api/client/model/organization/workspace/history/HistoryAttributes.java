@@ -9,6 +9,7 @@ public class HistoryAttributes {
     private String createdBy;
     private String createdDate;
     private String output;
+    private String jobReference;
     private String updatedBy;
     private String updatedDate;
 }
