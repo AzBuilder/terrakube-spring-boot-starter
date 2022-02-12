@@ -11,4 +11,5 @@ public class JobAttributes {
     private String terraformPlan;
     private String tcl;
     private String approvalTeam;
+    private String templateReference;
 }
