@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.terrakube.client.spring.autoconfigure.RestClientAutoConfiguration
