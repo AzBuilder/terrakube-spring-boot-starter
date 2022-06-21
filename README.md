@@ -2,7 +2,15 @@
 
 ## Introduction
 
-This repository is for Spring Boot Starters of Terrakube Api.
+This repository is for Spring Boot Starters of Terrakube feign Client.
+
+### Build library
+
+To build the library locally use the following command.
+
+```
+mvn install -Dgpg.skip
+```
 
 ## Client library
 
@@ -10,8 +18,8 @@ Simply add the following dependency to your project's `pom.xml` will enable you 
 
 ```xml
 <dependency>
-    <groupId>org.azbuilder.api.spring.starter</groupId>
-    <artifactId>api-client-spring-boot-starter</artifactId>
+    <groupId>org.terrakube.client</groupId>
+    <artifactId>terrakube-spring-boot-starter</artifactId>
     <version>0.8.0</version>
 </dependency>
 ```

@@ -1,0 +1,10 @@
+package org.terrakube.client.model.organization.vcs;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Relationships {
+    OrganizationData organization;
+}
