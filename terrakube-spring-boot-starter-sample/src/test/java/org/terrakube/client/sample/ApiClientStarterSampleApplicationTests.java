@@ -4,6 +4,10 @@ import org.terrakube.client.TerrakubeClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.terrakube.client.model.organization.Organization;
+import org.terrakube.client.model.response.Response;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -16,8 +20,11 @@ class ApiClientStarterSampleApplicationTests {
     @Test
     void contextLoads() {
         assertNotNull(terrakubeClient);
-/*
-        Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
+		/**
+        System.out.println(terrakubeClient.getAllOrganizations().getData().size());
+        Response<List<Organization>> organizationResponse = terrakubeClient.getOrganizationByName("hashicorp");
+
+		Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
 
         System.out.println(moduleTemp.getAttributes().getDownloadQuantity());
 
