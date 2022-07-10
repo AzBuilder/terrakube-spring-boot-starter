@@ -49,31 +49,29 @@ public class DexCredentialAuthentication implements Authenticator, Interceptor {
 
     private String generateAccessToken() {
         log.error("Generate Dex Authentication Private Token");
-        String accessToken = "";
+        String newToken = "";
 
         if (this.dexCredentialType.equals(DexCredentialType.INTERNAL)) {
             SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64URL.decode(this.secretKey));
 
-            accessToken = Jwts.builder()
-                    .setIssuer(this.ISSUER)
-                    .setSubject(this.SUBJECT)
-                    .setAudience(this.ISSUER)
-                    .claim("email", this.EMAIL)
+            newToken = Jwts.builder()
+                    .setIssuer(DexCredentialAuthentication.ISSUER)
+                    .setSubject(DexCredentialAuthentication.SUBJECT)
+                    .setAudience(DexCredentialAuthentication.ISSUER)
+                    .claim("email", DexCredentialAuthentication.EMAIL)
                     .claim("email_verified", true)
-                    .claim("name", this.NAME)
+                    .claim("name", DexCredentialAuthentication.NAME)
                     .setIssuedAt(Date.from(Instant.now()))
                     .setExpiration(Date.from(Instant.now().plus(30, ChronoUnit.DAYS)))
                     .signWith(key)
                     .compact();
 
-            log.info("{}", accessToken);
-        }else {
-            accessToken = this.secretKey;
+        } else {
+            newToken = this.secretKey;
         }
 
-        return accessToken;
+        return newToken;
     }
-
 
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {

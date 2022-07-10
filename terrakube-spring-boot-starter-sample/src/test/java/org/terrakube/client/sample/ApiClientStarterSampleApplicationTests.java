@@ -20,10 +20,11 @@ class ApiClientStarterSampleApplicationTests {
     @Test
     void contextLoads() {
         assertNotNull(terrakubeClient);
-/**
+		/**
         System.out.println(terrakubeClient.getAllOrganizations().getData().size());
         Response<List<Organization>> organizationResponse = terrakubeClient.getOrganizationByName("hashicorp");
-        Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
+
+		Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
 
         System.out.println(moduleTemp.getAttributes().getDownloadQuantity());
 
