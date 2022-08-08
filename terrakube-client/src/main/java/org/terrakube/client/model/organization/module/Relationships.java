@@ -9,4 +9,5 @@ import org.terrakube.client.model.organization.workspace.VcsData;
 public class Relationships {
     OrganizationData organization;
     VcsData vcs;
+    SshData ssh;
 }
