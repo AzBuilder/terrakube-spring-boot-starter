@@ -10,5 +10,6 @@ public class Relationships {
     OrganizationData organization;
     VariableData variable;
     VcsData vcs;
+    SshData ssh;
     HistoryData history;
 }

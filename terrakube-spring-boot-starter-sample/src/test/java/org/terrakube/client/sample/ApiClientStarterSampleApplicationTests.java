@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.terrakube.client.model.organization.Organization;
+import org.terrakube.client.model.organization.ssh.Ssh;
+import org.terrakube.client.model.organization.workspace.Workspace;
 import org.terrakube.client.model.response.Response;
 
 import java.util.List;
@@ -21,7 +23,17 @@ class ApiClientStarterSampleApplicationTests {
     void contextLoads() {
         assertNotNull(terrakubeClient);
 		/**
-        System.out.println(terrakubeClient.getAllOrganizations().getData().size());
+
+
+		 Response<Ssh> sshResponse = terrakubeClient.getSshById("16503793-48a5-4a07-a058-cb38dd1aae53","34b3c9a8-6afc-4446-b8ec-dcd92cc26233");
+		 System.out.println(sshResponse.getData().getAttributes().getPrivateKey());
+		 System.out.println(sshResponse.getData().getAttributes().getSshType());
+		 Response<Workspace> workspaceResponse = terrakubeClient.getWorkspaceById("16503793-48a5-4a07-a058-cb38dd1aae53","bce39846-8e87-468e-95a7-0f6f4f33d41f");
+		 System.out.println(workspaceResponse.getData().getRelationships().getSsh().getData().getId());
+		 System.out.println(workspaceResponse.getData().getRelationships().getSsh().getData().getType());
+
+		 
+		 System.out.println(terrakubeClient.getAllOrganizations().getData().size());
         Response<List<Organization>> organizationResponse = terrakubeClient.getOrganizationByName("hashicorp");
 
 		Module moduleTemp = restClient.getModuleById("0faca394-14b3-40cb-b0d6-0775673259cf", "e63f7e58-d9d1-4033-a85f-4113430f9e19").getData();
