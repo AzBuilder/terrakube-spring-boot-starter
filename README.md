@@ -20,7 +20,7 @@ Simply add the following dependency to your project's `pom.xml` will enable you 
 <dependency>
     <groupId>org.terrakube.client</groupId>
     <artifactId>terrakube-spring-boot-starter</artifactId>
-    <version>0.9.0</version>
+    <version>0.11.0</version>
 </dependency>
 ```
 

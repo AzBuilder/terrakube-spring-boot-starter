@@ -12,4 +12,5 @@ public class JobAttributes {
     private String tcl;
     private String approvalTeam;
     private String templateReference;
+    private String commitId;
 }
