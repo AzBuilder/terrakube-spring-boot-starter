@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.9</version>
+		<version>2.6.13</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.terrakube.client</groupId>
@@ -20,7 +20,7 @@
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
-		<revision>0.9.1</revision>
+		<revision>0.11.0</revision>
 		<feign.version>11.8</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
 		<maven.deploy.skip>false</maven.deploy.skip>
