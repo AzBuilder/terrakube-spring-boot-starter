@@ -12,4 +12,7 @@ public class HistoryAttributes {
     private String jobReference;
     private String updatedBy;
     private String updatedDate;
+    private int serial;
+    private String md5;
+    private String lineage;
 }
