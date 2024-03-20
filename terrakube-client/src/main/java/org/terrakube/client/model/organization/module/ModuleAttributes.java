@@ -15,4 +15,6 @@ public class ModuleAttributes {
     private int downloadQuantity;
     private String registryPath;
     private List<String> versions;
+    private String tagPrefix;
+    private String folder;
 }
