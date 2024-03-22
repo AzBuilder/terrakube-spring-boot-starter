@@ -4,18 +4,17 @@ import feign.Feign;
 import feign.Logger;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.terrakube.client.TerrakubeClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import org.terrakube.client.dex.DexCredentialAuthentication;
-import org.terrakube.client.dex.DexCredentialType;
 
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(RestClientProperties.class)
 @ConditionalOnMissingBean(TerrakubeClient.class)
 public class RestClientAutoConfiguration {
