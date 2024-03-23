@@ -12,7 +12,4 @@ public class ApiClientStarterSampleApplication {
 		SpringApplication.run(ApiClientStarterSampleApplication.class, args);
 	}
 
-	@Autowired
-	TerrakubeClient terrakubeClient;
-
 }
