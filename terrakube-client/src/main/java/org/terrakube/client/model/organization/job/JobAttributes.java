@@ -10,7 +10,7 @@ public class JobAttributes {
     private String status;
     private String terraformPlan;
     private String tcl;
-    private String planChanges;
+    private boolean planChanges;
     private String approvalTeam;
     private String templateReference;
     private String commitId;
