@@ -15,6 +15,7 @@ import org.terrakube.client.model.organization.provider.version.implementation.I
 import org.terrakube.client.model.organization.ssh.Ssh;
 import org.terrakube.client.model.organization.template.Template;
 import org.terrakube.client.model.organization.vcs.Vcs;
+import org.terrakube.client.model.organization.vcs.github_app_token.GitHubAppToken;
 import org.terrakube.client.model.organization.workspace.Workspace;
 import org.terrakube.client.model.organization.workspace.history.HistoryRequest;
 import org.terrakube.client.model.organization.workspace.variable.Variable;
@@ -95,11 +96,13 @@ public interface TerrakubeClient {
 
     @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}")
     Response<Vcs> getVcsById(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId);
-
+    
+    @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}/gitHubAppToken?filter[github_app_token]=owner=={owner}")
+    Response<List<GitHubAppToken>> getGitHubAppTokenByVcsIdAndOwner(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId, @Param("owner") String owner);
+    
     @RequestLine("GET /api/v1/organization/{organizationId}/ssh/{sshId}")
     Response<Ssh> getSshById(@Param("organizationId") String organizationId, @Param("sshId") String sshId);
 
     @RequestLine("GET /api/v1/organization/{organizationId}/template/{templateId}")
     Response<Template> getTemplateById(@Param("organizationId") String organizationId, @Param("templateId") String templateId);
-
 }

@@ -7,4 +7,5 @@ import lombok.Setter;
 @Setter
 public class Relationships {
     OrganizationData organization;
+    GitHubAppTokenData github_app_token;    
 }
