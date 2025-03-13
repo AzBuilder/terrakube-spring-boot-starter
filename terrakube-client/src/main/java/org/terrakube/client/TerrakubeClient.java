@@ -97,8 +97,8 @@ public interface TerrakubeClient {
     @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}")
     Response<Vcs> getVcsById(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId);
     
-    @RequestLine("GET /api/v1/organization/{organizationId}/vcs/{vcsId}/gitHubAppToken?filter[github_app_token]=owner=={owner}")
-    Response<List<GitHubAppToken>> getGitHubAppTokenByVcsIdAndOwner(@Param("organizationId") String organizationId, @Param("vcsId") String vcsId, @Param("owner") String owner);
+    @RequestLine("GET /api/v1/github_app_token?filter[github_app_token]=owner=={owner};appId=={appId}")
+    Response<List<GitHubAppToken>> getGitHubAppTokenByVcsIdAndOwner( @Param("owner") String owner, @Param("appId") String appId);
     
     @RequestLine("GET /api/v1/organization/{organizationId}/ssh/{sshId}")
     Response<Ssh> getSshById(@Param("organizationId") String organizationId, @Param("sshId") String sshId);
