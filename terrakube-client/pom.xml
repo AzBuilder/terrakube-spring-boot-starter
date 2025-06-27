@@ -8,7 +8,7 @@
 		<version>3.5.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>org.terrakube.client</groupId>
+	<groupId>io.terrakube.client</groupId>
 	<artifactId>terrakube-client</artifactId>
 	<version>${revision}</version>
 	<name>terrakube-client</name>
@@ -20,7 +20,7 @@
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-		<revision>0.17.0</revision>
+		<revision>1.0.0</revision>
 		<feign.version>13.2.1</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
 		<maven.deploy.skip>false</maven.deploy.skip>
@@ -38,7 +38,7 @@
 
 	<organization>
 		<name>Terrakube</name>
-		<url>https://terrakube.org/</url>
+		<url>https://docs.terrakube.io/</url>
 	</organization>
 
 	<developers>

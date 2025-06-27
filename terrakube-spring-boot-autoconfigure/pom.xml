@@ -8,7 +8,7 @@
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.terrakube.client</groupId>
+	<groupId>io.terrakube.client</groupId>
 	<artifactId>terrakube-spring-boot-autoconfigure</artifactId>
 	<version>${revision}</version>
 	<name>terrakube-spring-boot-autoconfigure</name>
@@ -21,7 +21,7 @@
 		<maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
 		<feign.version>13.2.1</feign.version>
-		<revision>0.17.0</revision>
+		<revision>1.0.0</revision>
 		<maven.deploy.skip>false</maven.deploy.skip>
 		<lombok.version>1.18.30</lombok.version>
 	</properties>
@@ -36,7 +36,7 @@
 
 	<organization>
 		<name>Terrakube</name>
-		<url>https://terrakube.org/</url>
+		<url>https://docs.terrakube.io/</url>
 	</organization>
 
 	<developers>
@@ -142,7 +142,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.terrakube.client</groupId>
+			<groupId>io.terrakube.client</groupId>
 			<artifactId>terrakube-client</artifactId>
 			<version>${revision}</version>
 		</dependency>

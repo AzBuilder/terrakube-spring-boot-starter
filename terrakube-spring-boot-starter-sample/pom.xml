@@ -8,7 +8,7 @@
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.terrakube.client</groupId>
+	<groupId>io.terrakube.client</groupId>
 	<artifactId>terrakube-spring-boot-starter-sample</artifactId>
 	<version>${revision}</version>
 	<name>terrakube-spring-boot-starter-sample</name>
@@ -19,7 +19,7 @@
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-		<revision>0.17.0</revision>
+		<revision>1.0.0</revision>
 		<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 
@@ -33,7 +33,7 @@
 
 	<organization>
 		<name>Terrakube</name>
-		<url>https://terrakube.org/</url>
+		<url>https://docs.terrakube.io/</url>
 	</organization>
 
 	<developers>
@@ -129,7 +129,7 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.terrakube.client</groupId>
+			<groupId>io.terrakube.client</groupId>
 			<artifactId>terrakube-spring-boot-starter</artifactId>
 			<version>${revision}</version>
 		</dependency>
