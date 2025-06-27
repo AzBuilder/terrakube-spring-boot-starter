@@ -1,1 +1,1 @@
-org.terrakube.client.spring.autoconfigure.RestClientAutoConfiguration
+io.terrakube.client.spring.autoconfigure.RestClientAutoConfiguration
