@@ -10,6 +10,7 @@ import io.terrakube.client.model.organization.job.step.Step;
 import io.terrakube.client.model.organization.job.step.StepRequest;
 import io.terrakube.client.model.organization.module.Module;
 import io.terrakube.client.model.organization.module.ModuleRequest;
+import io.terrakube.client.model.organization.module.version.ModuleVersion;
 import io.terrakube.client.model.organization.provider.version.Version;
 import io.terrakube.client.model.organization.provider.version.implementation.Implementation;
 import io.terrakube.client.model.organization.ssh.Ssh;
@@ -81,6 +82,9 @@ public interface TerrakubeClient {
     @RequestLine("PATCH /api/v1/organization/{organizationId}/module/{moduleId}")
     @Headers("Content-Type: application/vnd.api+json")
     void updateModule(ModuleRequest moduleRequest, @Param("organizationId") String organizationId, @Param("moduleId") String moduleId);
+    
+    @RequestLine("GET /api/v1/organization/{organizationId}/module/{moduleId}/version")
+    Response<List<ModuleVersion>> getAllVersionsByOrganizationIdAndModuleId(@Param("organizationId") String organizationId, @Param("moduleId") String moduleId);
 
     @RequestLine("GET /api/v1/organization?filter[organization]=name=={organizationName}&filter[provider]=name=={providerName}")
     Response<List<Organization>> getOrganizationsByNameAndProvider(@Param("organizationName") String organizationName, @Param("providerName") String providerName);
